@@ -1,5 +1,5 @@
 {
-  "name": "random-js",
+  "name": "@jore20/random-js-lib",
   "version": "2.0.0",
   "description": "A comprehensive random number and utility library with seeded randomness, weighted selection, and various random data generators",
   "main": "index.js",
@@ -31,9 +31,9 @@
     "url": "https://github.com/JOrE20/random-js"
   },
   "bugs": {
-    "url": "https://github.com/JOrE20/random-js/issues"
+    "url": "https://github.com/JOrE20/random-js"
   },
-  "homepage": "https://github.com/JOrE20/random-js#readme",
+  "homepage": "https://github.com/JOrE20/random-js",
   "engines": {
     "node": ">=12.0.0"
   }
