@@ -12,7 +12,7 @@ npm install @jore20/random-js-lib
 
 ```
 // CommonJS
-const Random = require('jore-random-js-lib');
+const Random = require('@jore20/random-js-lib');
 
 // ES Modules
 import Random from '@jore20/random-js-lib';
@@ -52,7 +52,7 @@ console.log(Random.uuid());        // Random UUID
 
 ## Features
 
-* ✅ Seeded random numbers (reproducible sequences) with incredible performance (200 million numbers per second, 5x than seedrandom with 50 million numbers per second)
+* ✅ Seeded random numbers (reproducible sequences) with incredible performance
 
 * ✅ Weighted random selection
 
