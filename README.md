@@ -24,6 +24,7 @@ import Random from 'random-js';
 ## Quick Examples
 
 ```javascript
+Random = new Random();
 // Basic random numbers
 console.log(Random.between(1, 100)); // Random integer between 1-100
 console.log(Random.float(0, 1));     // Random float between 0-1
