@@ -52,7 +52,7 @@ console.log(Random.uuid());        // Random UUID
 
 ## Features
 
-* ✅ Seeded random numbers (reproducible sequences) with incredible performance
+* ✅ Seeded random numbers (reproducible sequences)
 
 * ✅ Weighted random selection
 
