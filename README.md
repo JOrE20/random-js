@@ -18,7 +18,7 @@ const Random = require('jore-random-js-lib');
 import Random from '@jore20/random-js-lib';
 
 // Browser (via CDN)
-<script src="https://unpkg.com/@jore20/random-js-lib"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jore20/random-js-lib@latest"></script>
 ```
 
 ## Quick Examples
