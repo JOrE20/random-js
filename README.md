@@ -5,26 +5,28 @@ A comprehensive random number and utility library with seeded randomness, weight
 ## Installation
 
 ```bash
-npm install random-js
+npm install @jore20/random-js-lib
 ```
 
 ## Usage
 
 ```
 // CommonJS
-const Random = require('random-js');
+const Random = require('jore-random-js-lib');
 
 // ES Modules
-import Random from 'random-js';
+import Random from '@jore20/random-js-lib';
 
 // Browser (via CDN)
-<script src="https://unpkg.com/random-js"></script>
+<script src="https://unpkg.com/@jore20/random-js-lib"></script>
 ```
 
 ## Quick Examples
 
 ```javascript
+// Create Element
 Random = new Random();
+
 // Basic random numbers
 console.log(Random.between(1, 100)); // Random integer between 1-100
 console.log(Random.float(0, 1));     // Random float between 0-1
