@@ -61,7 +61,7 @@ Random.pick(['Apple', 'Banana', 'Cherry']); // Random item
 ```
 ##### 2. Seeded Reproducibility
 ```javascript
-Random.setSeed('my-seed');
+Random.setSeed('123');
 
 Random.seeded(1, 100); // Always same number
 Random.seededName(); // Always same name
