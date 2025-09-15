@@ -22,7 +22,6 @@ class Random {
         this.lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];
         this.countries = ['United States', 'Canada', 'United Kingdom', 'Australia', 'Germany', 'France', 'Japan', 'Brazil', 'India', 'Mexico'];
         this.usStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia'];
-
         this.misc = {
             demoArray: ["Apple", "Banana", "Cherry"],
             coinFlipper: () => this.pick(["Heads!", "Tails!"]),
@@ -90,8 +89,8 @@ class Random {
         };
 
         this.about = {
-            version: "v2.0",
-            build: 12,
+            version: "v2.1",
+            build: 16,
             product: "Random.js",
             creator: "JOrE",
             date: "9/10/2025",
@@ -215,6 +214,11 @@ class Random {
         this.lastSeed = (this.lastSeed * 2654435761 + 1) | 0;
         return min + (this.lastSeed & 0x7FFFFFFF) % (max - min + 1);
     }
+	
+    withSeed(min, max, seed) {
+        return min + (((seed * 2654435761 + 1) | 0) & 0x7FFFFFFF) % (max - min + 1);
+    }
+	
 
     weightedPick(items, normalIfAllWeightsAreZero = false, defaultWeight = undefined, defaultValue = undefined, seeded = false) {
         let randomValue = 0;
@@ -650,8 +654,8 @@ class Random {
     seededTimestamp() { return new Date(Date.now() - this.seeded(0, 31536000000)).toISOString(); }
 
     sentence(wordCount, wordLength) {
-        const count = wordCount !== undefined ? wordCount : this.between(20, 30);
-        const wLength = wordLength !== undefined ? wordLength : this.between(4, 7);
+        const count = wordCount !== undefined ? wordCount : this.between(5, 10);
+        const wLength = wordLength;
 
         let sentence = '';
         for (let i = 0; i < count; i++) {
@@ -663,7 +667,7 @@ class Random {
 
     seededSentence(wordCount, wordLength) {
         const count = wordCount !== undefined ? wordCount : this.seeded(20, 30);
-        const wLength = wordLength !== undefined ? wordLength : this.seeded(4, 7);
+        const wLength = wordLength;
 
         let sentence = '';
         for (let i = 0; i < count; i++) {
@@ -673,15 +677,17 @@ class Random {
         return sentence.charAt(0).toUpperCase() + sentence.slice(1) + '.';
     }
 
-    paragraph(wordCount, wordLength, sentencesCount) {
+    paragraph(wordCount, wordLength, sentencesCount, paragraphLength) {
+		const pLength = paragraphLength !== undefined ? paragraphLength : this.between(3, 5);
         const sCount = sentencesCount !== undefined ? sentencesCount : this.between(3, 5);
-        const wCount = wordCount !== undefined ? wordCount : this.between(20, 30);
-        const wLength = wordLength !== undefined ? wordLength : this.between(4, 7);
+        const wCount = wordCount;
+        const wLength = wordLength;
 
         let paragraph = '';
         for (let i = 0; i < sCount; i++) {
             paragraph += this.sentence(wCount, wLength);
             if (i < sCount - 1) paragraph += ' ';
+			if ((i % pLength) == 0) paragraph += '\n';
         }
         return paragraph;
     }
@@ -898,6 +904,43 @@ class Random {
         console.log(`Current seed: ${this.currentSeed()}`);
         return undefined;
     }
+	
+    benchmark() { // incredible performance is real. if you believe it's not, run Random.benchmark().
+		let n = 0;
+		let o = 1;
+		let i = 0;
+		let f = 0;
+		let j = 0;
+		let u = 0;
+		let Q = 0;
+        console.log(`%cRandom.js ${this.about.version} Benchmark`, "font-size: 16px; font-weight: bold;");
+		console.log('Now testing 1 billion seeded random numbers...');
+		f = Date.now();
+		for (let Q = 1; Q < 1000000000; Q++) {
+          o = (o * 2654435761 + 1) | 0;
+          n = 1 + (o & 0x7FFFFFFF) % (100 - 1 + 1);
+        }
+		i = Date.now();
+		u = i-f;
+		console.log(`Test done, time taken: ${i-f}ms`);
+		console.log('Testing 1 billion Math.random() calls...')
+		f = Date.now();
+		for (let Q = 1; Q < 1000000000; Q++) {
+          o = Math.random();
+        }		
+		i = Date.now();
+		j = i-f;
+		console.log(`Test done, time taken: ${j}ms`);
+		console.log('Now testing 1 billion random non-seeded numbers between 1 and 100:')
+		f = Date.now();
+		for (let Q = 1; Q < 1000000000; Q++) {
+          o = this.between(1,100);
+        }		
+		i = Date.now();
+		if (i-f > j) {console.log(`Test done, time taken: ${i-f}ms, ${Math.floor(((i-f)/j)*100)/100}x slower than native Math.random().`);} else {console.log(`Test done, time taken: ${i-f}ms, ${Math.floor(((j)/i-f)*100)/100}x faster (???) than native Math.random().`);}
+        if (j > u) {console.log(`The seeded random number generation is mythically ${Math.floor(((j)/u)*100)/100}x faster than native Math.random(), so you should use the seeded random generation instead of native Math.random(). Just type <name>.randomize() to set seed to a random number using Math.random and make sure the sequence woudln't repeated (but possible with 1 in 4 billion chance, worth for better performance).`)}
+	}
+	
 }
 
 // Export for different environments
