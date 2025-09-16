@@ -165,6 +165,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ### 🐛 Issues
 Found a bug or have a feature request? Please open an issue on our GitHub repository.
 
+### Documention ✏️
+[Click here to view the documention.](https://www.perchance.org/rjsd)
+
 ### ❓ FAQ
 **Q: How is this different from Chance.js or Faker?**
 A: This library provides fully seeded/deterministic versions of all data generation functions, making it perfect for testing and reproducible scenarios.
