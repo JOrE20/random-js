@@ -13,15 +13,15 @@ class RandomError extends Error {
 
 class Random {
     constructor() {
-        this.lastSeed = 1;
+        this.lastSeed = this.between(1,4000000000);
         this.lastResult = null;
         this.lastHash = null;
         
-        this.maleNames = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Thomas', 'Charles'];
-        this.femaleNames = ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Elizabeth', 'Barbara', 'Susan', 'Jessica', 'Sarah', 'Karen'];
-        this.lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];
-        this.countries = ['United States', 'Canada', 'United Kingdom', 'Australia', 'Germany', 'France', 'Japan', 'Brazil', 'India', 'Mexico'];
-        this.usStates = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia'];
+        this.maleNames = ["Ethan","Samuel","Jacob","William","Benjamin","Ben","Joshua","Josh","Alexander","Daniel","Jackson","Andrew","Isaac","James","Tyler","Max","Eli","Joseph","Gabriel","Owen","Liam","Cody","Kody","Paul","Zack","Zach","Zac","Zak","Zeke","Zane","Kyle","Saul","Sean","Shaun","Brody","Bryan","Brian","Brandon","Evan","Nick","Xavier","Oliver","Ike","Howie","Howard","Chance","Chandler","Preston","Jason","Mason","Nathan","Luca","Lucas","Luka","Lukas","Ryan","Orion","Damon","Damion","Damien","Ken","Ivan","Michael","Wyatt","Aaron","Colin","Bryce","Brice","Noah","Connor","Conner","Jeremy","Isaiah","Spencer","Dylan","Nash","Freddy","Otto","Todd","Ian","Blake","Julian","Dominic","Grayson","Greyson","Nelson","Jensen","Jenson","Will","Bill","Phil","Dave","Cyrus","Travis","Henry","Reece","Reese","Branson","Mark","Marc","Scott","Aiden","Vincent","Vince","Jimmy","Jaxon","Kobe","Cobe","Koby","Coby","Solomon","Oscar","Ollie","Ewan","Cole","Lucian","Billy","Gavin","Malikai","Makai","Javion","Patrick","Beckett","Easton","Jake","Kaleb","Niko","Nico","Justin","Mateo","Muhammad","Emmett","AJ","BJ","TJ","DJ","Trent","Trenton","Theo","Duncan","Ezekiel","Harold","Geoff","Jeff","Steve","Joe","Larry","Carl","Karl","Preston","Ben","Lenny","Lennard","Bruno","Leonardo","Mac","Christopher","Kristopher","Carson","Hunter","Hudson","Roman","Declan","Miles","Jude","Seth","Antonio","Montgomery","Eugene","Rhett","Colt","Shane","Caden","Kaden","Cayden","Kayden","Nate","Landon","Austin","Dallas","Parker","Weston","Milo","Dawson","Juda","Judah","Paxton","Zander","Simon","Kyler","Garrett","Winston","Jared","Jonas","Porter","Carter","Russell","Benson","Marcel","Quentin","Quenton","Gregory","Greg","Orlando","Thaddeus","Jeffery","Jeffrey","Everest","Israel","David","Leo","Lewis","Louis","Lance","George","Grant","Xander","Tate","Titus","Trevor","Trevon","Kurtis","Curtis","Santiago","Shawn","Romeo","Keith","Kipp","Lane","Felix","Frank","Flynn","Melvin","Magnus","Diego","Douglas","Dale","Yavin","Brady","Julius","Jasper","Jay","Hugo","Hank","Stefan","Silas","Quimby","Leland","Warford","Ugo","Esteban","Dean","Desmond","Dex","Dwayne","Don","Bob","Olaf","Lambert","Macon","Ralph","Gage","Ajax","Shane","Vance","Jebediah","Terrence","Manuel","Zachariah","Hagan","Eldon","Yvon","Price","Galen","Elias","Vinny","Uriel","Townsend","Dalton","Beckham","Kal-el","Jaegar","Garvey","Sonny","Fairfax","Wally","Fergus","Jerome","Lambert","Dane","Jaron","Galvin","Calvin","Haines","Van","Kale","Kane","Iggy","Tam","Randall","Carlisle","Wilhelm","Wilbur","Aldon","Alden","Edison","Dev","Andru","Cliff","Clifford","Nic","Nik","Ralf","King","Craig","Eriq","Beau","Chaz","Dez","Ozzy","Ozzie","Karter","Lincoln","Atticus","Soren","Horace","Yuda","Fletcher","Hardy","Kane","Ogden","Xylon","Abbott"];
+        this.femaleNames = ["Emma", "Olivia", "Ava", "Isabella", "Sophia", "Mia", "Charlotte", "Amelia", "Evelyn", "Abigail", "Harper", "Emily", "Elizabeth", "Avery", "Sofia", "Ella", "Madison", "Scarlett", "Victoria", "Aria", "Grace", "Chloe", "Camila", "Penelope", "Riley", "Layla", "Lillian", "Nora", "Zoey", "Mila", "Aubrey", "Hannah", "Lily", "Addison", "Eleanor", "Natalie", "Luna", "Savannah", "Brooklyn", "Leah", "Zoe", "Stella", "Hazel", "Ellie", "Paisley", "Audrey", "Skylar", "Violet", "Claire", "Bella", "Aurora", "Lucy", "Anna", "Samantha", "Caroline", "Genesis", "Aaliyah", "Kennedy", "Kinsley", "Allison", "Maya", "Sarah", "Madelyn", "Adeline", "Alexa", "Ariana", "Elena", "Gabriella", "Naomi", "Alice", "Sadie", "Hailey", "Eva", "Emilia", "Autumn", "Quinn", "Nevaeh", "Piper", "Ruby", "Serenity", "Willow", "Everly", "Cora", "Kaylee", "Lydia", "Aubree", "Arianna", "Eliana", "Peyton", "Melanie", "Gianna", "Isabelle", "Julia", "Valentina", "Nova", "Clara", "Vivian", "Reagan", "Mackenzie", "Madeline", "Brielle"]
+        this.lastNames = ["Smith","Johnson","Williams","Brown","Jones","Miller","Davis","Garcia","Rodriguez","Wilson","Martinez","Anderson","Taylor","Thomas","Hernandez","Moore","Martin","Jackson","Thompson","White","Lopez","Lee","Gonzalez","Harris","Clark","Lewis","Robinson","Walker","Perez","Hall","Young","Allen","Sanchez","Wright","King","Scott","Green","Baker","Adams","Nelson","Hill","Ramirez","Campbell","Mitchell","Roberts","Carter","Phillips","Evans","Turner","Torres","Parker","Collins","Edwards","Stewart","Flores","Morris","Nguyen","Murphy","Rivera","Cook","Rogers","Morgan","Peterson","Cooper","Reed","Bailey","Bell","Gomez","Kelly","Howard","Ward","Cox","Diaz","Richardson","Wood","Watson","Brooks","Bennett","Gray","James","Reyes","Cruz","Hughes","Price","Myers","Long","Foster","Sanders","Ross","Morales","Powell","Sullivan","Russell","Ortiz","Jenkins","Gutierrez","Perry","Butler","Barnes","Fisher","Henderson","Coleman","Simmons","Patterson","Jordan","Reynolds","Hamilton","Graham","Kim","Gonzales","Alexander","Ramos","Wallace","Griffin","West","Cole","Hayes","Chavez","Gibson","Bryant","Ellis","Stevens","Murray","Ford","Marshall","Owens","Mcdonald","Harrison","Ruiz","Kennedy","Wells","Alvarez","Woods","Mendoza","Castillo","Olson","Webb","Washington","Tucker","Freeman","Burns","Henry","Vasquez","Snyder","Simpson","Crawford","Jimenez","Porter","Mason","Shaw","Gordon","Wagner","Hunter","Romero","Hicks","Dixon","Hunt","Palmer","Robertson","Black","Holmes","Stone","Meyer","Boyd","Mills","Warren","Fox","Rose","Rice","Moreno","Schmidt","Patel","Ferguson","Nichols","Herrera","Medina","Ryan","Fernandez","Weaver","Daniels","Stephens","Gardner","Payne","Kelley","Dunn","Pierce","Arnold","Tran","Spencer","Peters","Hawkins","Grant","Hansen","Castro","Hoffman","Hart","Elliott","Cunningham","Knight","Bradley"]
+        this.countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "The Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Côte d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "The Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kansas", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Maurice", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "São Tomé and Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
+        this.usStates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "NewHampshire", "NewJersey", "NewMexico", "NewYork", "NorthCarolina", "NorthDakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "RhodeIsland", "SouthCarolina", "SouthDakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "WestVirginia", "Wisconsin", "Wyoming"];
         this.misc = {
             demoArray: ["Apple", "Banana", "Cherry"],
             coinFlipper: () => this.pick(["Heads!", "Tails!"]),
@@ -64,20 +64,6 @@ class Random {
                 }
                 return result;
             },
-            randomPointInCircle: (radius = 1, centerX = 0, centerY = 0) => {
-                const angle = this.float(0, Math.PI * 2);
-                const r = radius * Math.sqrt(this.float(0, 1));
-                return {
-                    x: centerX + r * Math.cos(angle),
-                    y: centerY + r * Math.sin(angle)
-                };
-            },
-            randomPointInRectangle: (width = 1, height = 1, x = 0, y = 0) => {
-                return {
-                    x: x + this.float(0, width),
-                    y: y + this.float(0, height)
-                };
-            },
             charset: {
                 ALPHABET: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
                 alphabet: 'abcdefghijklmnopqrstuvwxyz',
@@ -89,12 +75,12 @@ class Random {
         };
 
         this.about = {
-            version: "v2.1",
-            build: 16,
+            version: "v2.3",
+            build: 81,
             product: "Random.js",
             creator: "JOrE",
             date: "9/10/2025",
-            updated: new Date().toLocaleDateString(),
+            updated: "9/16/2025",
             features: [
                 "Seeded random numbers",
                 "Weighted random selection",
@@ -103,15 +89,9 @@ class Random {
                 "Float number generation",
                 "Gaussian distribution",
                 "UUID generation",
-                "Color utilities",
-                "Noise functions"
+                "Color utilities"
             ]
         };
-
-        this._floor = Math.floor;
-        this._random = Math.random;
-        this._Math = Math;
-
         this.seededFunctions = {
             pick: this.seededPick.bind(this),
             flipCoin: this.seededFlipCoin.bind(this),
@@ -125,10 +105,19 @@ class Random {
             pickMultiple: this.seededPickMultiple.bind(this)
         };
     }
+	
+	// Research shows this library generates up to 200 million random seeded numbers per second and same 200 million for non-seeded numbers (Random.between) and 250 million random numbers in native Math.random() in browsers (e.g., chrome), but in Node.js envoirment Math.random only generates up to 50 million floats per second and the library only generates up to 100 million numbers per second. Non-seeded generation is almost same as native Math.random() due to insane optimizions.
 
     hash(number) {
         return (number * 2654435761) >>> 0;
     }
+	
+	fastestRng(min, max) {
+	  if (window) 
+		return this.between(min,max) // In browser
+	else 
+		return this.seeded(min, max) // In Node.js
+	}
 
     float(min, max, step = 0) {
         let randomFloat = min + Math.random() * (max - min);
@@ -194,7 +183,7 @@ class Random {
     }
 
     between(min, max) {
-        return min + this._floor(this._random() * (max - min + 1));
+        return min + Math.floor(Math.random() * (max - min + 1));
     }
 
     setSeed(seed) {
@@ -217,6 +206,25 @@ class Random {
 	
     withSeed(min, max, seed) {
         return min + (((seed * 2654435761 + 1) | 0) & 0x7FFFFFFF) % (max - min + 1);
+    }
+	
+	seededFill(min, max, count) {
+	  let ar = [];
+      for (let i = 0; i < count; i++) {this.lastSeed = (this.lastSeed * 2654435761 + 1) | 0; ar.push(min + (((this.lastSeed * 2654435761 + 1) | 0) & 0x7FFFFFFF) % (max - min + 1))};
+	  return ar;
+    }
+	
+	fill(min, max, count) {
+	  let ar = [];
+      for (let i = 0; i < count; i++) {ar.push(this.between(min, max))};
+	  return ar;
+    }	
+	
+    withSeedFill(min, max, count, seed) {
+	  let ar = [];
+	  this.lastSeed = seed;
+      for (let i = 0; i < count; i++) {this.lastSeed = (this.lastSeed * 2654435761 + 1) | 0; ar.push(min + (((this.lastSeed * 2654435761 + 1) | 0) & 0x7FFFFFFF) % (max - min + 1))};
+	  return ar;
     }
 	
 
@@ -773,91 +781,6 @@ class Random {
         return 'Lorem Ipsum ' + this.seededParagraph(wordCount, wordLength, sentenceCount);
     }
 
-    noise(x, y = 0, z = 0) {
-        const grad3 = [
-            [1, 1, 0], [-1, 1, 0], [1, -1, 0], [-1, -1, 0],
-            [1, 0, 1], [-1, 0, 1], [1, 0, -1], [-1, 0, -1],
-            [0, 1, 1], [0, -1, 1], [0, 1, -1], [0, -1, -1]
-        ];
-
-        const p = [];
-        for (let i = 0; i < 256; i++) {
-            p[i] = Math.floor(this.float(0, 256));
-        }
-
-        const perm = [];
-        for (let i = 0; i < 512; i++) {
-            perm[i] = p[i & 255];
-        }
-
-        function dot(g, x, y, z) {
-            return g[0] * x + g[1] * y + g[2] * z;
-        }
-
-        function mix(a, b, t) {
-            return (1 - t) * a + t * b;
-        }
-
-        function fade(t) {
-            return t * t * t * (t * (t * 6 - 15) + 10);
-        }
-
-        let X = Math.floor(x) & 255;
-        let Y = Math.floor(y) & 255;
-        let Z = Math.floor(z) & 255;
-
-        x -= Math.floor(x);
-        y -= Math.floor(y);
-        z -= Math.floor(z);
-
-        let u = fade(x);
-        let v = fade(y);
-        let w = fade(z);
-
-        let A = perm[X] + Y, AA = perm[A] + Z, AB = perm[A + 1] + Z;
-        let B = perm[X + 1] + Y, BA = perm[B] + Z, BB = perm[B + 1] + Z;
-
-        return mix(
-            mix(
-                mix(dot(grad3[perm[AA] % 12], x, y, z),
-                    dot(grad3[perm[BA] % 12], x - 1, y, z), u),
-                mix(dot(grad3[perm[AB] % 12], x, y - 1, z),
-                    dot(grad3[perm[BB] % 12], x - 1, y - 1, z), u), v),
-            mix(
-                mix(dot(grad3[perm[AA + 1] % 12], x, y, z - 1),
-                    dot(grad3[perm[BA + 1] % 12], x - 1, y, z - 1), u),
-                mix(dot(grad3[perm[AB + 1] % 12], x, y - 1, z - 1),
-                    dot(grad3[perm[BB + 1] % 12], x - 1, y - 1, z - 1), u), v), w);
-    }
-
-    analysis = {
-        testDistribution: (func, samples = 1000, ...args) => {
-            const results = {};
-            for (let i = 0; i < samples; i++) {
-                const value = func(...args);
-                results[value] = (results[value] || 0) + 1;
-            }
-
-            const distribution = {};
-            for (const key in results) {
-                distribution[key] = (results[key] / samples) * 100;
-            }
-
-            return distribution;
-        },
-
-        testFloatDistribution: (func, buckets = 10, samples = 1000, ...args) => {
-            const results = Array(buckets).fill(0);
-            for (let i = 0; i < samples; i++) {
-                const value = func(...args);
-                const bucket = Math.min(Math.floor(value * buckets), buckets - 1);
-                results[bucket]++;
-            }
-
-            return results.map(count => (count / samples) * 100);
-        }
-    };
-
     demo() {
         console.log(`%cRandom.js Demo ${this.about.version}`, "font-size: 16px; font-weight: bold;");
         console.log(`Random.between(10,20) = ${this.between(10,20)}`);
@@ -914,7 +837,7 @@ class Random {
 		let u = 0;
 		let Q = 0;
         console.log(`%cRandom.js ${this.about.version} Benchmark`, "font-size: 16px; font-weight: bold;");
-		console.log('Now testing 1 billion seeded random numbers...');
+		console.log('Testing 1 billion seeded random numbers...');
 		f = Date.now();
 		for (let Q = 1; Q < 1000000000; Q++) {
           o = (o * 2654435761 + 1) | 0;
@@ -923,7 +846,7 @@ class Random {
 		i = Date.now();
 		u = i-f;
 		console.log(`Test done, time taken: ${i-f}ms`);
-		console.log('Testing 1 billion Math.random() calls...')
+		console.log('Now testing 1 billion Math.random() calls...')
 		f = Date.now();
 		for (let Q = 1; Q < 1000000000; Q++) {
           o = Math.random();
@@ -938,7 +861,7 @@ class Random {
         }		
 		i = Date.now();
 		if (i-f > j) {console.log(`Test done, time taken: ${i-f}ms, ${Math.floor(((i-f)/j)*100)/100}x slower than native Math.random().`);} else {console.log(`Test done, time taken: ${i-f}ms, ${Math.floor(((j)/i-f)*100)/100}x faster (???) than native Math.random().`);}
-        if (j > u) {console.log(`The seeded random number generation is mythically ${Math.floor(((j)/u)*100)/100}x faster than native Math.random(), so you should use the seeded random generation instead of native Math.random(). Just type <name>.randomize() to set seed to a random number using Math.random and make sure the sequence woudln't repeated (but possible with 1 in 4 billion chance, worth for better performance).`)}
+        if (j > u) {console.log(`The seeded random number generation is mythically ${Math.floor(((j)/u)*100)/100}x faster than native Math.random(), so you should use the seeded random generation instead of native Math.random(). The initial seed is fully random so just use Random.seeded(min, max).`)}
 	}
 	
 }
